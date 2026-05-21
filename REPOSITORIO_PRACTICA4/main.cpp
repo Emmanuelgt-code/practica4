@@ -3,6 +3,7 @@
  * Facultad de Ingenieria - Universidad de Antioquia
  * Simulacion de red de enrutadores con POO y STL
  */
+
 #include <iostream>
 #include <vector>
 #include <list>
@@ -13,7 +14,6 @@
 #include <algorithm>
 
 using namespace std;
-
 
 // ============================================================
 //  CLASE: Enlace (representa una conexion entre dos enrutadores)
@@ -353,8 +353,125 @@ void crearArchivoEjemplo() {
     cout << "  [+] Archivo 'topologia.txt' creado con el ejemplo de la practica.\n";
 }
 
-int main()
-{
-    cout << "Hello World!" << endl;
+// ============================================================
+//  MENU PRINCIPAL
+// ============================================================
+int main() {
+    Red red;
+    int opcion;
+
+    cout << "\n========================================\n";
+    cout << "  Practica 4 - Red de Enrutadores\n";
+    cout << "  Informatica 2 - UdeA\n";
+    cout << "========================================\n";
+
+    do {
+        cout << "\n--- MENU PRINCIPAL ---\n";
+        cout << "1. Cargar red de ejemplo (Figura 1 de la practica)\n";
+        cout << "2. Cargar red desde archivo\n";
+        cout << "3. Agregar enrutador\n";
+        cout << "4. Eliminar enrutador\n";
+        cout << "5. Agregar enlace\n";
+        cout << "6. Eliminar enlace\n";
+        cout << "7. Mostrar topologia de la red\n";
+        cout << "8. Mostrar tablas de enrutamiento (todos)\n";
+        cout << "9. Encontrar camino entre dos enrutadores\n";
+        cout << "10. Crear archivo de topologia de ejemplo\n";
+        cout << "0. Salir\n";
+        cout << "Opcion: ";
+        cin >> opcion;
+
+        switch (opcion) {
+
+        case 1: {
+            red.cargarEjemploPractica();
+            break;
+        }
+
+        case 2: {
+            string nombreArchivo;
+            cout << "  Nombre del archivo: ";
+            cin >> nombreArchivo;
+            red.cargarDesdeArchivo(nombreArchivo);
+            break;
+        }
+
+        case 3: {
+            string nombre;
+            cout << "  Nombre del enrutador: ";
+            cin >> nombre;
+            red.agregarEnrutador(nombre);
+            break;
+        }
+
+        case 4: {
+            string nombre;
+            cout << "  Nombre del enrutador a eliminar: ";
+            cin >> nombre;
+            red.eliminarEnrutador(nombre);
+            break;
+        }
+
+        case 5: {
+            string a, b;
+            int costo;
+            cout << "  Enrutador A: ";
+            cin >> a;
+            cout << "  Enrutador B: ";
+            cin >> b;
+            cout << "  Costo del enlace: ";
+            cin >> costo;
+            red.agregarEnlace(a, b, costo);
+            break;
+        }
+
+        case 6: {
+            string a, b;
+            cout << "  Enrutador A: ";
+            cin >> a;
+            cout << "  Enrutador B: ";
+            cin >> b;
+            red.eliminarEnlace(a, b);
+            break;
+        }
+
+        case 7: {
+            red.mostrarRed();
+            break;
+        }
+
+        case 8: {
+            red.mostrarTodasLasTablas();
+            break;
+        }
+
+        case 9: {
+            string origen, destino;
+            cout << "  Enrutador origen: ";
+            cin >> origen;
+            cout << "  Enrutador destino: ";
+            cin >> destino;
+            red.encontrarCamino(origen, destino);
+            break;
+        }
+
+        case 10: {
+            crearArchivoEjemplo();
+            break;
+        }
+
+        case 0: {
+            cout << "\n  Hasta luego!\n";
+            break;
+        }
+
+        default: {
+            cout << " Opcion invalida. Intente de nuevo.\n";
+            break;
+        }
+        }
+
+    } while (opcion != 0);
+
     return 0;
 }
