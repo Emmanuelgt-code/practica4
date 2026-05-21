@@ -1,0 +1,3 @@
+C:\Qt\Tools\CMake_64\bin\cmake.exe -E rm -f CMakeFiles\REPOSITORIO_PRACTICA4.dir/objects.a
+C:\Qt\Tools\mingw1310_64\bin\ar.exe qc CMakeFiles\REPOSITORIO_PRACTICA4.dir/objects.a @CMakeFiles\REPOSITORIO_PRACTICA4.dir\objects1.rsp
+C:\Qt\Tools\mingw1310_64\bin\g++.exe -g -Wl,--whole-archive CMakeFiles\REPOSITORIO_PRACTICA4.dir/objects.a -Wl,--no-whole-archive -o REPOSITORIO_PRACTICA4.exe -Wl,--out-implib,libREPOSITORIO_PRACTICA4.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\REPOSITORIO_PRACTICA4.dir\linkLibs.rsp
